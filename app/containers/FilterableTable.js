@@ -16,7 +16,7 @@ const FilterableTable = ({ filter, onFilter }) => {
                 ref={node => {input = node;}}
                 onChange={() => onFilter(input.value)} />
 
-            <ProductTable filter={filter} />
+            <ProductTable filter={filter} onSelect={onFilter} />
         </div>
     );
 };

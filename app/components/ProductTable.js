@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ProductRow from './ProductRow';
+import Items from './ProductItems';
 
 const products = [
   { category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football' },
@@ -11,25 +11,12 @@ const products = [
   { category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7' }
 ];
 
-const ProductTable = ({ filter }) => {
-    let rows = [];
-
-    products.forEach(p => {
-        const nameLC = p.name.toLowerCase();
-        const filterLC = filter.toLowerCase();
-
-        if (nameLC.indexOf(filterLC) !== -1) {
-            rows.push(
-                <ProductRow key={p.name} data={p} />
-            );
-        }
-    });
-
-    return <div> {rows} </div>;
-};
+const ProductTable = ({filter, onSelect}) =>
+    <Items prefix={filter} onSelect={onSelect} products={products} />;
 
 ProductTable.propTypes = {
-    filter: PropTypes.string
+    filter: PropTypes.string,
+    onSelect: PropTypes.func.isRequired,
 };
 
 export default ProductTable;

@@ -1,8 +1,15 @@
-import * as types from './types';
+import {FILTER, TOGGLE} from './types';
 
 export function filterTable(filter) {
     return {
-        type: types.FILTER,
+        type: FILTER,
         filter
+    };
+}
+
+export function toggleOption(key) {
+    return {
+        type: TOGGLE,
+        key
     };
 }
